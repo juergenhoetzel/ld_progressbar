@@ -1,0 +1,10 @@
+#+title: Inject in-process-progressbar using LD_PRELOAD
+
+This is just a useless hack to experiment with dynamic preloading in Go.
+
+Usage:
+#+BEGIN_SRC bash
+go build -buildmode=c-shared -o progressbar.so
+LD_PRELOAD=$PWD/progressbar.so zfs send tank/root@snap1 | ssh remove zfs recv newtank/root
+#+END_SRC
+
